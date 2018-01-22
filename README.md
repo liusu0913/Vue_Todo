@@ -19,3 +19,6 @@ npm run build
 ```
 
 For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).
+本文的博客地址：[柴米油盐](https://liusu0913.github.io/2018/01/22/Todo.html).
+
+

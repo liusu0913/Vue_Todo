@@ -1,36 +1,40 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank">Twitter</a></li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li><a href="http://router.vuejs.org/" target="_blank">vue-router</a></li>
-      <li><a href="http://vuex.vuejs.org/" target="_blank">vuex</a></li>
-      <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
-    </ul>
+    <h1>{{tit}}</h1>
+    <ol class="todos">
+      <li v-for="(todo, index) in todos" :data-index="index" :class="{'finish':todo.isFinished}">{{index + 1}}{{todo.things}}------{{todo.time | time}}</li>
+    </ol>
   </div>
 </template>
 
 <script>
+// import './assets/app.less';
+
 export default {
   name: 'app',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      tit: 'Vue-todos',
+      todos: [{
+        things: '上班去',
+        isFinished: false,
+        time: Date.now()
+      }, {
+        things: '上班中',
+        isFinished: false,
+        time: Date.now() + 30000
+      }, {
+        things: '下班了',
+        isFinished: false,
+        time: Date.now() + 50000
+      }]
     }
   }
 }
 </script>
-
-<style>
+<!-- 仅作用于当前的组件 -->
+<style scope>
+@import './assets/app.less';
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -50,7 +54,6 @@ ul {
 }
 
 li {
-  display: inline-block;
   margin: 0 10px;
 }
 
